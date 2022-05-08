@@ -50,11 +50,25 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
-      - name: Start RENDER_TEMPLATE_NO_DATA analysis
+      - name: Start PARSE_FRAME_HEADER analysis
         uses: ForAllSecure/mcode-action@v1
         with:
           mayhem-token: ${{ secrets.MAYHEM_TOKEN }}
-          args: --image ${{ steps.meta.outputs.tags }} --file ${{ env.RENDER_TEMPLATE_NO_DATA }} --duration 300
+          args: --image ${{ steps.meta.outputs.tags }} --file ${{ env.PARSE_FRAME_HEADER }} --duration 300
+          sarif-output: sarif
+
+      - name: Start READ_MESSAGE_CLIENT analysis
+        uses: ForAllSecure/mcode-action@v1
+        with:
+          mayhem-token: ${{ secrets.MAYHEM_TOKEN }}
+          args: --image ${{ steps.meta.outputs.tags }} --file ${{ env.READ_MESSAGE_CLIENT }} --duration 300
+          sarif-output: sarif
+
+      - name: Start READ_MESSAGE_SERVER analysis
+        uses: ForAllSecure/mcode-action@v1
+        with:
+          mayhem-token: ${{ secrets.MAYHEM_TOKEN }}
+          args: --image ${{ steps.meta.outputs.tags }} --file ${{ env.READ_MESSAGE_SERVER }} --duration 300
           sarif-output: sarif
 
       - name: Upload SARIF file(s)
