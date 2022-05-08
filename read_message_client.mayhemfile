@@ -1,0 +1,5 @@
+project: tungstenite-rs
+target: read_message_client
+
+cmds:
+  - cmd: /read_message_client

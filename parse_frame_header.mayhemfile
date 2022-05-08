@@ -1,0 +1,5 @@
+project: tungstenite-rs
+target: parse_frame_header
+
+cmds:
+  - cmd: /parse_frame_header
